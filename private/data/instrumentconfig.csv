@@ -1,0 +1,5 @@
+Instrument,Pointsize,AssetClass,Currency
+FXE,1,Equity,USD
+GLD,1,Equity,USD
+IEF,1,Equity,USD
+SPY,1,Equity,USD
