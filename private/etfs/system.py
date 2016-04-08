@@ -27,12 +27,12 @@ def forecast_scalar_estimate():
     instrument_list = sys.get_instrument_list()
     print(instrument_list)
 
-    sys.config.forecast_scalar_estimate['pool_instruments'] = False
+    sys.config.forecast_scalar_estimate['pool_instruments'] = True
 
     results = []
     for instrument_code in instrument_list:
         results.append(
-            round(float(sys.forecastScaleCap.get_forecast_scalar(instrument_code, "ewmac8").tail(1).values), 2))
+            round(float(sys.forecastScaleCap.get_forecast_scalar(instrument_code, "ewmac64_256").tail(1).values), 2))
     print(results)
 
 
