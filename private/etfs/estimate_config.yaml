@@ -1,0 +1,38 @@
+# porfolio
+percentage_vol_target: 20
+notional_trading_capital: 10000
+base_currency: "USD"
+instruments: ['SPY','GLD','IEF', 'FXE']
+
+# rules
+trading_rules:
+  ewmac16_64:
+     function: systems.provided.example.rules.ewmac_forecast_with_defaults
+     data: data.daily_prices
+     other_args: 
+         Lfast: 16
+         Lslow: 64
+  ewmac64_256:
+     function: systems.provided.example.rules.ewmac_forecast_with_defaults
+     other_args: 
+         Lfast: 64
+         Lslow: 256
+
+# forecast scalar
+use_forecast_scale_estimates: True
+forecast_scalar_estimate:
+   pool_instruments: True
+
+# forecast combination
+use_forecast_weight_estimates: True
+forecast_weight_estimate:
+   method: shrinkage
+
+# forecast correlation
+forecast_correlation_estimate:
+   pool_instruments: True
+
+# instruments weights
+use_instrument_weight_estimates: True
+instrument_weight_estimate:
+   method: "shrinkage"

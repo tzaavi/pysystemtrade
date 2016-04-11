@@ -3,10 +3,10 @@ from sysdata.configdata import Config
 
 from systems.forecasting import Rules
 from systems.basesystem import System
-from systems.forecast_combine import ForecastCombineFixed
+from systems.forecast_combine import ForecastCombineFixed, ForecastCombine
 from systems.forecast_scale_cap import ForecastScaleCap
 from systems.positionsizing import PositionSizing
-from systems.portfolio import PortfoliosFixed
+from systems.portfolio import PortfoliosFixed, Portfolios
 from systems.account import Account
 
 
@@ -15,6 +15,18 @@ def create_system(log_level="on"):
     data = csvFuturesData("private.data")
 
     sys = System([Account(), PortfoliosFixed(), PositionSizing(), ForecastCombineFixed(), ForecastScaleCap(), Rules()
+                        ], data, config)
+
+    sys.set_logging_level(log_level)
+
+    return sys
+
+
+def create_estimate_system(log_level="on"):
+    config = Config("private.etfs.estimate_config.yaml")
+    data = csvFuturesData("private.data")
+
+    sys = System([Account(), Portfolios(), PositionSizing(), ForecastCombine(), ForecastScaleCap(), Rules()
                         ], data, config)
 
     sys.set_logging_level(log_level)

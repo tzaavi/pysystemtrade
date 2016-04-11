@@ -20,10 +20,8 @@ forecast_weights:
      ewmac64_256: 0.5
 forecast_div_multiplier: 1.1
 instrument_weights:
-     FXE: .33
-     GLD: .33
-     #IEF: .25
-     SPY: .34
+     FXE: .25
+     GLD: .25
+     IEF: .25
+     SPY: .25
 instrument_div_multiplier: 1.5
-
-use_forecast_scale_estimates: True
